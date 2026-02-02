@@ -8,8 +8,12 @@ class PageController extends Controller
 {
    public function home()
    {
-    $url = route('products.show', ['id' => 5]);
-    return "Lex Imperialis Store, reliques autorisées par le Code. Pour l’Empereur." . $url ;
+    $shop = [
+        'name' => 'Lex Imperialis Store',
+        'products' => 42,
+        'open' => true,
+    ];
+    return view('home', ['shop' => $shop]);
    }
 
    public function contact()
