@@ -13,7 +13,7 @@
     </p>
 </div>
 
-@if(!empty($products) && count($products))
+@if($products->isNotEmpty())
     <div class="row g-3">
 
         @foreach($products as $product)
@@ -22,23 +22,23 @@
 
                     <!-- Image -->
                     <img
-                        src="{{ asset('images/'.$product['image']) }}"
-                        alt="{{ $product['name'] }}"
+                        src="{{ asset($product->image) }}"
+                        alt="{{ $product->name }}"
                         class="img-fluid rounded mb-3 product-thumb"
                     >
 
                     <!-- Nom -->
                     <h5 class="fw-bold mb-2">
-                        {{ $product['name'] }}
+                        {{ $product->name }}
                     </h5>
 
                     <!-- Prix -->
                     <div class="fw-bold mb-3" style="color: var(--gold);">
-                        {{ number_format($product['price'], 2, ',', ' ') }} €
+                        {{ number_format($product->price, 2, ',', ' ') }} €
                     </div>
 
                     <!-- Bouton -->
-                    <a href="{{ url('/products/'.$product['id']) }}"
+                    <a href="{{ route('products.show', $product->id) }}"
                        class="btn btn-imperial btn-sm mt-auto align-self-start">
                         Détails
                     </a>

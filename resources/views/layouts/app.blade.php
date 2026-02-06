@@ -187,6 +187,28 @@
             box-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
         }
 
+        /* FLASH MESSAGES */
+        .flash-message {
+            border-radius: 0;
+            border: 1px solid transparent;
+            padding: 12px 16px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .flash-success {
+            background: linear-gradient(135deg, rgba(20, 60, 20, 0.85), rgba(10, 30, 10, 0.9));
+            border-color: #2d6a2d;
+            color: #c7f5c7;
+        }
+
+        .flash-error {
+            background: linear-gradient(135deg, rgba(90, 10, 10, 0.85), rgba(40, 5, 5, 0.9));
+            border-color: var(--blood);
+            color: #ffd1d1;
+        }
+
         /* HERO SECTION */
         .hero {
             background: 
@@ -640,6 +662,18 @@
     </header>
 
     <main class="container py-5 war-main">
+        @if (session('success'))
+            <div class="flash-message flash-success mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="flash-message flash-error mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
+
         @yield('content')
     </main>
 
